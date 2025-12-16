@@ -11,3 +11,5 @@
 │       └── create-github-app.yml
 ├── requirements.txt
 └── README.md
+add .gitignore
+add LICENSE
