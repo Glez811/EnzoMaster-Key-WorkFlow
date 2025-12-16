@@ -1,0 +1,13 @@
+- run: pip install requests playwright PyNaCl
+  shell: bash
+
+- run: playwright install chromium
+  shell: bash
+
+- run: python scripts/main.py
+  shell: bash
+  env:
+    TRAEFIK_DOMAIN: ${{ inputs.domain }}
+    APP_NAME: ${{ inputs.app-name }}
+    GITHUB_TOKEN: ${{ github.token }}
+    GITHUB_REPOSITORY: ${{ github.repository }}
