@@ -1,0 +1,32 @@
+import json
+import urllib.parse
+
+GITHUB_CREATE_APP_URL = "https://github.com/settings/apps/new?manifest="
+
+def build_manifest(app_name: str, domain: str) -> dict:
+    return {
+        "name": app_name,
+        "url": f"https://{domain}",
+        "hook_attributes": {
+            "url": f"https://{domain}/webhooks",
+            "active": True,
+        },
+        "redirect_url": f"https://{domain}/callback",
+        "public": False,
+        "default_permissions": {
+            "contents": "write",
+            "issues": "write",
+            "pull_requests": "write",
+            "checks": "write",
+        },
+        "default_events": [
+            "push",
+            "pull_request",
+            "check_run",
+            "installation",
+        ],
+    }
+
+def manifest_url(manifest: dict) -> str:
+    encoded = urllib.parse.quote(json.dumps(manifest, separators=(",", ":")))
+    return f"{GITHUB_CREATE_APP_URL}{encoded}"
