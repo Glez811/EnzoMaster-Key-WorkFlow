@@ -1,1 +1,2 @@
 https://gerrit.googlesource.com/gitiles/+/refs/heads/master/
+git push origin HEAD:refs/for/refs/meta/config
