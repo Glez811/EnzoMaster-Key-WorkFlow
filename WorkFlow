@@ -1,3 +1,4 @@
+workflow file path.env_prod file.yaml
 deployment.yaml
 }
 https://github.com/Glez811/EnzoMaster-Key-WorkFlow/actions
@@ -52,5 +53,5 @@ spec:
 │       └── create-github-app.yml
 ├── requirements.txt
 └── README.md
-add .gitignore
-add LICENSE
+add .gitignore.files.py
+add LICENSE.txt
