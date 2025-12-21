@@ -1,4 +1,4 @@
-workflow file path.env_prod file.yaml
+workflow file path.env_prod file.py
 deployment.yaml
 }
 https://github.com/Glez811/EnzoMaster-Key-WorkFlow/actions
