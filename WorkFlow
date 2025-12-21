@@ -1,3 +1,44 @@
+deployment.yaml
+}
+https://github.com/Glez811/EnzoMaster-Key-WorkFlow/actions
+
+kubectl apply -f deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-verifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: verify-app
+  template:
+    metadata:
+      labels:
+        app: verify-app
+    spec:
+      # 1. Link to the KSA that is bound to the GSA
+      serviceAccountName: my-ksa
+      containers:
+      - name: verify-app
+        image: your-app-image:latest
+        env:
+        # GCP Project and Secret Info
+        - name: GCP_PROJECT_ID
+          value: "your-project-id"
+        - name: SECRET_NAME
+          value: "enzo-master-secret"
+        # 3. New: Website Tracking ID (if hardcoded)
+        - name: TRACKING_ID
+          value: "UA-XXXXXXXXX-Y" 
+        # OR: Fetching a Tracking API Key from a K8s Secret
+        - name: TRACKING_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tracking-secrets
+              key: api-key
+{
 .
 ├── scripts/
 │   ├── __init__.py
